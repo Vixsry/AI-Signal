@@ -65,5 +65,3 @@ Terima kasih kepada pengembang dan komunitas yang telah berkontribusi untuk memb
 - **Instalasi**: Langkah-langkah untuk menjalankan proyek secara lokal.
 - **Penggunaan**: Menjelaskan cara menggunakan aplikasi dan fitur-fitur utamanya.
 - **Kontribusi**: Menyediakan panduan bagi kontributor untuk berpartisipasi dalam pengembangan proyek ini.
-
-Dengan template `README.md` ini, Anda bisa langsung menambahkannya ke repositori GitHub Anda dan memperbarui bagian-bagian tertentu sesuai kebutuhan.
