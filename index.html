@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Signals Live</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="bg-black text-white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+               
+                <b> AI SIGNAL LIVE</b>
+            </a>
+            <div class="ms-auto text-white">
+                <span id="connection-status">
+                    <i class="fas fa-circle text-success"></i> Connected
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card p-3">
+                    <h5><i class="fas fa-chart-line me-2"></i>Market Overview</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active text-white" href="#"><i class="fas fa-home me-2"></i>Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i class="fas fa-search me-2"></i>Explorer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><i class="fas fa-exchange-alt me-2"></i>Trading</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card p-3 text-white">
+                            <h5>Live Prices</h5>
+                            <div id="price-container">
+                                <!-- Prices will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card p-3">
+                            <h5>Fear & Greed Index</h5>
+                            <div class="fear-greed">
+                                <div class="fear-greed-value">56</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Live Ticker -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row" id="price-tickers">
+                            <!-- Dynamic Price Tickers will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Analysis Dashboard -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card ai-prediction">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-brain me-2"></i>
+                            Live AI Analysis
+                            <small class="float-end" id="last-update"></small>
+                        </h5>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6>Market Sentiment</h6>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar ai-confidence" id="sentiment-bar" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Volatility Index</h6>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar bg-warning ai-confidence" id="volatility-bar" role="progressbar"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h6>Trading Volume</h6>
+                                <div class="progress mb-2">
+                                    <div class="progress-bar bg-info ai-confidence" id="volume-bar" role="progressbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Active Positions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <h5 class="mb-3">Active Positions</h5>
+        <div class="row" id="active-positions">
+            <!-- Dynamic Position Cards will be inserted here -->
+        </div>
+    </div>
+</div>
+
+<!-- New Signals -->
+<div class="row">
+    <div class="col-12">
+        <h5 class="mb-3">Latest AI Signals</h5>
+        <div class="row" id="signal-container">
+            <!-- Dynamic Signal Cards will be inserted here -->
+        </div>
+    </div>
+</div>
+        
+    <!-- Templates -->
+    <template id="price-ticker-template">
+        <div class="col-md-3 mb-3">
+            <div class="d-flex align-items-center price-ticker">
+                <i class="fab fa-bitcoin fa-2x me-2"></i>
+                <div>
+                    <h6 class="mb-0 symbol"></h6>
+                    <span class="price"></span>
+                    <span class="change"></span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="position-card-template">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="position-badge"></div>
+                <div class="card-body">
+                    <h5 class="card-title symbol"></h5>
+                    <div class="position-details">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Entry Price:</span>
+                            <strong class="entry-price"></strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Current Price:</span>
+                            <strong class="current-price"></strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>P&L:</span>
+                            <strong class="pnl"></strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Duration:</span>
+                            <strong class="duration"></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
