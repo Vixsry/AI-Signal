@@ -65,3 +65,17 @@ Terima kasih kepada pengembang dan komunitas yang telah berkontribusi untuk memb
 - **Instalasi**: Langkah-langkah untuk menjalankan proyek secara lokal.
 - **Penggunaan**: Menjelaskan cara menggunakan aplikasi dan fitur-fitur utamanya.
 - **Kontribusi**: Menyediakan panduan bagi kontributor untuk berpartisipasi dalam pengembangan proyek ini.
+
+# Note 
+
+Ai nya belum jalan sepenuhnya di sarankan mengembangkan nyah lebih lanjut
+
+## NOTE ⚠️
+Semua elemen yang digunakan dalam template website ini memiliki lisensinya masing-masing. Kami berharap Anda membaca ketentuan lisensi di situs web atau GitHub Pihak ketiga masing-masing
+
+## Follow Me
+[![Instagram](https://raw.githubusercontent.com/gauravghongde/social-icons/master/SVG/Color/Instagram.svg)](https://instagram.com/viksry12)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-@viksry12-%230077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/viksry)
+
+[![Twitter](https://img.shields.io/badge/Twitter-@Vixsry-%231DA1F2?style=flat&logo=twitter&logoColor=white)](https://twitter.com/Vixsry)
